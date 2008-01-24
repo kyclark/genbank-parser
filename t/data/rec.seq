@@ -1,0 +1,186 @@
+LOCUS       AB000001                 660 bp    DNA     linear   PLN 12-SEP-2002
+DEFINITION  Rhizoctonia solani genes for 18S rRNA, 5.8S rRNA, 28S rRNA, partial
+            and complete sequence, isolate:#1.
+ACCESSION   AB000001
+VERSION     AB000001.1  GI:1754539
+KEYWORDS    .
+SOURCE      Rhizoctonia solani
+  ORGANISM  Rhizoctonia solani
+            Eukaryota; Fungi; Dikarya; Basidiomycota; Agaricomycotina;
+            Agaricomycetes; Cantharellales; Ceratobasidiaceae; Thanatephorus.
+REFERENCE   1
+  AUTHORS   Kuninaga,S., Natsuaki,T., Takeuchi,T. and Yokosawa,R.
+  TITLE     Sequence variation of the rDNA ITS regions within and between
+            anastomosis groups in Rhizoctonia solani
+  JOURNAL   Curr. Genet. 32 (3), 237-243 (1997)
+   PUBMED   9339350
+REFERENCE   2  (bases 1 to 660)
+  AUTHORS   Kuninaga,S.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (19-DEC-1996) Shiro Kuninaga, Health Sciences University
+            of Hokkaido, General Education; 1757 Kanazawa, Tohbetsu, Hokkaido
+            061-02, Japan (E-mail:kuninaga@hoku-iryo-u.ac.jp,
+            Tel:81-1332-3-1211, Fax:81-1332-3-1276)
+FEATURES             Location/Qualifiers
+     source          1..660
+                     /organism="Rhizoctonia solani"
+                     /mol_type="genomic DNA"
+                     /strain="AG-3"
+                     /isolate="#1"
+                     /db_xref="taxon:456999"
+     rRNA            <1..6
+                     /product="18S ribosomal RNA"
+     rRNA            229..383
+                     /product="5.8S ribosomal RNA"
+     rRNA            656..>660
+                     /product="28S ribosomal RNA"
+     CDS             join(1677..1980,2158..2630,2729..3580)
+                     /gene="PHT5"
+                     /codon_start=1
+                     /product="inorganic phosphate transporter"
+                     /protein_id="BAA24280.1"
+                     /db_xref="GI:2780345"
+                     /translation="MAKKGKEVLNALDAAKTQMYHFTAIVIAGMGFFTDAYDLFSISL
+                     VTKLLGRIYYHVDSSKKPGTLPPNVAAAVNGVAFCGTLAGQLFFGWLGDKLGRKKVYG
+                     ITLMLMVLCSLGSGLSFGHSANGVMATLCFFRFWLGFGIGGDYPLSATIMSEYANKKT
+                     RGAFIAAVFAMQGFGILAGGIVSLIVSSTFDHAFKAPTYEVDPVGSTVPQADYVWRIV
+                     LMFGAIPALLTYYWRMKMPETARYTALVARNTKQAASDMSKVLQVDLIAEEEAQSNSN
+                     SSNPNFTFGLFTREFARRHGLHLLGTTTTWFLLDIAYYSSNLFQKDIYTAIGWIPAAE
+                     TMNAIHEVFTVSKAQTLIALCGTVPGYWFTVAFIDILGRFFIQLMGFIFMTIFMFALA
+                     IPYDHWRHRENRIGFLIMYSLTMFFANFGPNATTFVVPAEIFPARLRSTCHGISAASG
+                     KAGAIVGAFGFLYAAQSSDSEKTDAGYPPGIGVRNSLLMLACVNFLGIVFTLLVPESK
+                     GKSLEEISREDEEQSGGDTVVEMTVANSGRKVPV"
+ORIGIN      
+        1 aattttaatg aagagtttgg ttgtagctgg cccattaatt taggcatgtg cacacctttc
+       61 tctttcatcc catacacacc tgtgaacttg tgagacagat ggggaattta tttattgttt
+      121 ttttttgtaa tataaagatg ataagtcatt gaacccttct gtctactcaa ctcatataaa
+      181 ctcaatttat tttaaaatga atgtaatgga tgtaacgcat ctaatactaa gtttcaacaa
+      241 cggatctctt ggctctcgca tcgatgaaga acgcagcgaa atgcgataag taatgtgaat
+      301 tgcagaattc agtgaatcat cgaatctttg aacgcacctt gcgctccttg gtattccttg
+      361 gagcatgcct gtttgagtat catgaaatct tcaaaatcaa gtcttttgtt aattcaattg
+      421 gctttgactt tggtattgga ggtctttgca gcttcacacc tgctcctctt tgtacattag
+      481 ctggatctca gtgttatgct tggttccact cagcgtgata agttatctat cgctgaggac
+      541 actgtaaaaa ggtggccaag gtaaatgcag atgaaccgct tctaatagtc cattgacttg
+      601 gacaatattt ttatgatctg atctcaaatc aggtaggact acccgctgaa cttaagcata
+//
+LOCUS       AB000093                4249 bp    DNA     linear   PLN 14-FEB-2004
+DEFINITION  Arabidopsis thaliana gene for inorganic phosphate transporter,
+            complete cds.
+ACCESSION   AB000093
+VERSION     AB000093.1  GI:2780344
+KEYWORDS    inorganic phosphate transporter.
+SOURCE      Arabidopsis thaliana (thale cress)
+  ORGANISM  Arabidopsis thaliana
+            Eukaryota; Viridiplantae; Streptophyta; Embryophyta; Tracheophyta;
+            Spermatophyta; Magnoliophyta; eudicotyledons; core eudicotyledons;
+            rosids; eurosids II; Brassicales; Brassicaceae; Arabidopsis.
+REFERENCE   1
+  AUTHORS   Okumura,S., Mitsukawa,N., Shirano,Y. and Shibata,D.
+  TITLE     Phosphate transporter gene family of Arabidopsis thaliana
+  JOURNAL   DNA Res. 5 (5), 261-269 (1998)
+   PUBMED   9872450
+REFERENCE   2  (bases 1 to 4249)
+  AUTHORS   Mitsukawa,N.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (24-DEC-1996) Norihiro Mitsukawa, Mitsui Plant
+            Biotech.Res.Inst., Research Division; TCI-D21, Sengen 2-1-6,
+            Tsukuba, Ibaraki 305, JAPAN (E-mail:tsu01129@koryu.statci.go.jp,
+            Tel:0298-58-6252, Fax:0298-58-6234)
+FEATURES             Location/Qualifiers
+     source          1..4249
+                     /organism="Arabidopsis thaliana"
+                     /mol_type="genomic DNA"
+                     /db_xref="taxon:3702"
+                     /clone="pPHTGZ32"
+                     /ecotype="Columbia"
+     gene            join(1677..1980,2158..2630,2729..3580)
+                     /gene="PHT5"
+     CDS             join(1677..1980,2158..2630,2729..3580)
+                     /gene="PHT5"
+                     /codon_start=1
+                     /product="inorganic phosphate transporter"
+                     /protein_id="BAA24280.1"
+                     /db_xref="GI:2780345"
+                     /translation="MAKKGKEVLNALDAAKTQMYHFTAIVIAGMGFFTDAYDLFSISL
+                     VTKLLGRIYYHVDSSKKPGTLPPNVAAAVNGVAFCGTLAGQLFFGWLGDKLGRKKVYG
+                     ITLMLMVLCSLGSGLSFGHSANGVMATLCFFRFWLGFGIGGDYPLSATIMSEYANKKT
+                     RGAFIAAVFAMQGFGILAGGIVSLIVSSTFDHAFKAPTYEVDPVGSTVPQADYVWRIV
+                     LMFGAIPALLTYYWRMKMPETARYTALVARNTKQAASDMSKVLQVDLIAEEEAQSNSN
+                     SSNPNFTFGLFTREFARRHGLHLLGTTTTWFLLDIAYYSSNLFQKDIYTAIGWIPAAE
+                     TMNAIHEVFTVSKAQTLIALCGTVPGYWFTVAFIDILGRFFIQLMGFIFMTIFMFALA
+                     IPYDHWRHRENRIGFLIMYSLTMFFANFGPNATTFVVPAEIFPARLRSTCHGISAASG
+                     KAGAIVGAFGFLYAAQSSDSEKTDAGYPPGIGVRNSLLMLACVNFLGIVFTLLVPESK
+                     GKSLEEISREDEEQSGGDTVVEMTVANSGRKVPV"
+ORIGIN      
+        1 gaattccggc atgtggctat aaaaacccca attcatgtgt caaacaacca gttaaccatt
+       61 accatagagg ttgtgaaaaa attaccaggt gtgctcgtga tgctgctcgt tatactgaat
+      121 ccttcaatgt cgatgacgat gaaagtccca ttattaatct ccattgaaat ttaatcttta
+      181 atttactttc gttgatacta caaagattca tgtatttata cgtcgtgtag cttgaatata
+      241 ttcatatacc taattatcag tctattaaaa tgtgaaagat tatattttat taatttgtgt
+      301 ttttatgtaa agtcactaat tgttgtctta aatttttatg tattctatgc ttttcctgag
+      361 attatttatt tatttgttta taattttttt ttaattaaaa aataaattat gtgtgactac
+      421 tctttctcta gatatgcctt aagcaataaa agggggaaaa acattttttg atgacaaatt
+      481 agtttgtcat atgaatgaaa ttgtggttta gatgaatttc atccaagaat tcttaataga
+      541 accgaaaatc tctttaagtt ttaacataat caacaaagat aaattctatg aacattccta
+      601 atatttcctt taagattact caatgaattc ttgtccgagc gcttgcattt gtctaatcat
+      661 caacatagac gaatcataca tttgcttgcg gctaacgtca ccttcctttc ctccttcctc
+      721 ttcgaagagc ctaccatcca atatactcag cacatagaca aaaatctata tgagttacaa
+      781 aaattcatcc attgagttgt tacaatttaa tttgattgaa aattgttcat tagacattag
+      841 gtgaggaatg caatgttgtg tgagttaaat ttaagttact actgctacta ttgattcaag
+      901 tccgtcatac aaaattctag agaaaattaa tatatatatc ctctcgtttt cccatatctt
+      961 aaaattgtta aattgaaatc cagagggtaa gtgagagaag caatcgacct cagcaagagg
+     1021 tgtagtattc ataaaagttt tacgttgtat atttaatgac actacaaagt cattggaaaa
+     1081 tatatttttg taaggtatat tcttatagat tcttttaaat gtacttttcg tttctagagt
+     1141 tctctgaaga ctttagttcc acttcagcgt ttcaacagtt caaagtttcc acctcatgca
+     1201 tgtgttatgt gtacatattt cttctataca tccttttttt tcagtgaact atatgttata
+     1261 aaacagtaac tcttatagtt aagtgtaaac tggttggttt aagaataaac taaatatttt
+     1321 ttattaaatt gtagtaaatt gattagttta agatagaaac caaaaccaag cttaataaag
+     1381 ttagattgat tcctaacgtt agaaaaaaaa agttagattg attcctcacg tttcaaaagg
+     1441 ggatcgttgg ttcttggcct cacacatact tttccttgac tctttcaaaa aagacaacct
+     1501 ttgacaaatc gcttataaac tgcatttaat tttacataga taactgcact cactgtcaca
+     1561 tgcatgttca caatatcttg actatataat aattacattt ataaaatact agcctatgtg
+     1621 atcaaaaatt gttgtatcaa gattttctct caggtgactg aacaacagag aaaaacatgg
+     1681 cgaaaaaagg aaaagaagtg ttgaacgctt tggacgcagc caaaacgcag atgtaccatt
+     1741 tcacagcgat tgtaatcgcg ggtatgggtt ttttcactga tgcttacgat ctatttagca
+     1801 tctccctcgt cacgaagctc ctaggccgca tatactacca cgttgatagc tccaagaagc
+     1861 ctggaacgct ccctcctaat gttgctgccg ctgttaatgg tgtggccttc tgcggtacct
+     1921 tagcaggcca gctcttcttc ggttggctcg gtgacaagct cggccgcaag aaagtttacg
+     1981 gtaacctttg ctaatttctt ggccttaaca tatgttttag tagttttacg tttaaaatga
+     2041 tctatctaga ttaattcaaa gtatttgatc cattggtaat actagaacta ttaattatag
+     2101 tatttagtgg ctaaattaac taatggtata taatgaaaat tattggaata cacataggta
+     2161 ttaccttgat gctcatggta ctatgttctc tcgggtctgg tctatcattt ggtcactcag
+     2221 ctaacggagt aatggccaca ctttgtttct tccggttctg gctcggtttc ggcataggcg
+     2281 gcgactaccc tctctcagcc accatcatgt cggaatacgc caacaagaaa acacgtggcg
+     2341 ccttcatagc agccgtcttc gctatgcaag gcttcggaat cttagccgga ggaatcgtgt
+     2401 ctctcatcgt ctcgagtaca tttgaccatg ccttcaaagc gcccacctac gaggttgatc
+     2461 ctgttggctc cactgttcct caagcggatt acgtgtggcg gattgtgctc atgtttggag
+     2521 ctatcccagc tttacttact tattattggc ggatgaaaat gccggaaact gctcggtata
+     2581 ccgctcttgt agctcggaat accaaacaag ccgcctccga tatgtctaag gtacacgttc
+     2641 cttaactaat acttaatttc atcatatact aaatcatcat actaaaccat gatgattagt
+     2701 gtaaaagtaa ttattattta cacaacaggt gcttcaagtg gatctaattg cagaagaaga
+     2761 agcacaatca aattcaaatt catcaaaccc taatttcacc ttcggtttat tcaccagaga
+     2821 attcgctcgc cgtcacggtc tccaccttct cggcacaacc accacatggt tcctcctaga
+     2881 catcgcctat tacagcagca acctcttcca aaaagacatc tacacagcaa tcggatggat
+     2941 tcccgccgcc gaaacaatga acgcaatcca cgaagtcttc accgtctcaa aagctcaaac
+     3001 cctaatcgct ctctgcggca ccgtccctgg ttactggttc accgtcgcat tcatcgatat
+     3061 actcggtcga ttcttcatcc agttgatggg atttatcttc atgacgatct ttatgttcgc
+     3121 tttagcgatt ccttatgatc attggagaca tagagagaat cgaattggtt ttttgattat
+     3181 gtattcgttg actatgttct tcgctaattt tggacctaat gcgacgacgt ttgttgttcc
+     3241 tgctgagata tttccggcga ggttgagatc gacttgtcat gggatatcgg cggcgagtgg
+     3301 taaggcggga gcgattgttg gagcgtttgg gtttctttac gcggcgcaga gttcggattc
+     3361 ggagaagact gatgctggtt atcctcctgg gattggtgtt aggaattcgt tgttgatgct
+     3421 tgcttgtgtt aatttcttgg ggattgtttt tactctgttg gttccggagt ctaaagggaa
+     3481 gtctttggaa gagatttcga gagaagatga ggaacaaagc ggcggagata cggtggtgga
+     3541 gatgactgtg gcaaattccg gtagaaaagt cccggtttga ttattttgtg ttactcattt
+     3601 tgtaaattta ctctatatat gaaagtccct tgcataaagt ttttcgatac tcaatatatc
+     3661 agaataacag ttttgctgga actttgcaac caaattactc tgtgaattgg aaagtattat
+     3721 cttacttctt cctataaagc accagtgatc tttttgtaaa gagattcata agtctattgg
+     3781 tttatggaac aatgccttca catgcaagtc atattatttg tccagacgac gaagaggaag
+     3841 aatttgttga actagaaagc agtggcgata gaatcgttca ttaagataaa tggttcgtat
+     3901 aaaaccatta ggataaattc tatgttttgt gtttcatcat tgaatatcta ccagaccaaa
+     3961 tgattttatt tggttttagt ttcttttgta aatcccaaaa aaggtaaagt tatatcaaaa
+     4021 ccaaactaca aaccagatgt taatccctat tgtattaacc acaaacatgt taccagaata
+     4081 tatcaaaagt gtatcagttt cagtttgcta ctaagtaaag actttcatct ttgtgttgct
+     4141 taggcttcaa gttcgtttta tcttgtcttc tctgttttac tctgctttat gatgatgata
+     4201 aataacgatg gaacacaaga gagaagagct ccattatgca caagaattc
+//

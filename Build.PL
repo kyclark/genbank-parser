@@ -1,0 +1,21 @@
+use strict;
+use warnings;
+use Module::Build;
+
+my $builder = Module::Build->new(
+    module_name         => 'Bio::GenBankParser',
+    license             => 'perl',
+    dist_author         => 'Ken Youens-Clark <kclark@cshl.edu>',
+    dist_version        => '0.01',
+    build_requires => {
+        'Test::More'    => 0,
+    },
+    add_to_cleanup      => [ 'Bio-GenBankParser-*' ],
+    create_makefile_pl  => 'traditional',
+    requires            => {
+        'Parse::RecDescent' => 1.94,
+        'Readonly'          => 0,
+    }
+);
+
+$builder->create_build_script();
