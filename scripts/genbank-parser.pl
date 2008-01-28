@@ -69,7 +69,7 @@ genbank-parser.pl - parse GenBank records into YAML
 
 =head1 VERSION
 
-This documentation refers to version $Revision: 1.01$
+This documentation refers to version $Revision$
 
 =head1 SYNOPSIS
 
