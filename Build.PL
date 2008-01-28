@@ -5,8 +5,8 @@ use Module::Build;
 my $builder = Module::Build->new(
     module_name         => 'Bio::GenBankParser',
     license             => 'perl',
-    dist_author         => 'Ken Youens-Clark <kclark@cshl.edu>',
-    dist_version        => '0.01',
+    dist_author         => 'Ken Youens-Clark <kclark@cpan.org>',
+    dist_version        => '0.02',
     build_requires => {
         'Test::More'    => 0,
     },
@@ -15,6 +15,9 @@ my $builder = Module::Build->new(
     requires            => {
         'Parse::RecDescent' => 1.94,
         'Readonly'          => 0,
+    },
+    recommends          => {
+        'YAML'          => 0,
     }
 );
 
