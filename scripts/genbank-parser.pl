@@ -15,7 +15,7 @@ use Readonly;
 use YAML qw( Dump );
 
 Readonly my $VERSION => sprintf '%d.%02d', 
-                        qq$Revision: 1.01$ =~ /(\d+)\.(\d+)/;
+                        qq$Revision$ =~ /(\d+)\.(\d+)/;
 
 my ( $help, $man_page, $show_version );
 GetOptions(
