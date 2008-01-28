@@ -2,7 +2,7 @@
 
 # vim: tw=78: sw=4: ts=4: et: 
 
-# $Id: $
+# $Id$
 
 use strict;
 use warnings;
@@ -12,6 +12,7 @@ use File::Basename;
 use Getopt::Long;
 use Pod::Usage;
 use Readonly;
+use YAML qw( Dump );
 
 Readonly my $VERSION => sprintf '%d.%02d', 
                         qq$Revision: 1.01$ =~ /(\d+)\.(\d+)/;
@@ -36,21 +37,25 @@ if ( $show_version ) {
     exit 0;
 }
 
-my @files   = @ARGV or die 'No input files';
-my $grammar = join( '', <DATA> );
-my $parser  = Bio::GenBankParser->new;
+my @files  = @ARGV or pod2usage('No input files');
+my $parser = Bio::GenBankParser->new;
 
+my ( $num_files, $num_seq ) = ( 0, 0 );
 for my $file ( @files ) {
-    print "Processing '$file'\n";
-    open my $fh, '<', $file or die "Can't read $file: $!\n";
+    $num_files++;
+    $parser->file( $file );
 
-    local $/ = "//\n";
-
-    while ( my $rec = <$fh> ) {
-        print "record = ", Dumper($parser->startrule( $rec )), "\n";
-        last;
+    while ( my $seq = $parser->next_seq ) {
+        $num_seq++;
+        print Dump( $seq );
     }
 }
+
+printf STDERR "Done, processed %s sequence%s in %s file%s.\n",
+    $num_seq,
+    $num_seq   == 1 ? '' : 's',
+    $num_files,
+    $num_files == 1 ? '' : 's';
 
 __END__
 
@@ -60,7 +65,7 @@ __END__
 
 =head1 NAME
 
-genbank-parser.pl - a script
+genbank-parser.pl - parse GenBank records into YAML
 
 =head1 VERSION
 
@@ -68,7 +73,7 @@ This documentation refers to version $Revision: 1.01$
 
 =head1 SYNOPSIS
 
-  genbank-parser.pl 
+  genbank-parser.pl file1.seq [file2.seq ...]
 
 Options:
 
@@ -78,16 +83,17 @@ Options:
 
 =head1 DESCRIPTION
 
-Describe what the script does, what input it expects, what output it
-creates, etc.
+This is little more than an example showing a trivial use of 
+Bio::GenBankParser.  Here we convert a stream of files into YAML
+on STDOUT.
 
 =head1 SEE ALSO
 
-perl.
+Bio::GenBankParser, YAML.
 
 =head1 AUTHOR
 
-Ken Youens-Clark E<lt>kclark@cshl.eduE<gt>.
+Ken Youens-Clark E<lt>kclark@cpan.orgE<gt>.
 
 =head1 COPYRIGHT
 
