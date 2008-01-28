@@ -1,5 +1,9 @@
 Revision history for Bio-GenBankParser
 
-0.01    2008-01
+0.01    2008-01-23
         First version released.
 
+0.02    2008-01-28
+        Fixed up Build.PL to try to avoid automated testing errors, added
+        docs, expanded example script a bit, allowed a RefSeq accession to 
+        be valid in the parser.

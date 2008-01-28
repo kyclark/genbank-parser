@@ -1,4 +1,4 @@
-Bio::GenBankParser, version 0.01
+Bio::GenBankParser
 
 This module is meant to be a stand-alone parser for GenBank records.
 It is not related to the BioPerl project and has not ties to or
