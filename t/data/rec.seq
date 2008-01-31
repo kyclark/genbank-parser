@@ -28,6 +28,16 @@ FEATURES             Location/Qualifiers
                      /strain="AG-3"
                      /isolate="#1"
                      /db_xref="taxon:456999"
+                     /dev_stage="22 day-old seedlings (14 days after
+                     inoculation with Bradyrhizobium japonicum strain USDA110)"
+                     /clone_lib="Soybean Shoot cDNA Library"
+                     /note="Organ: Autoregulated shoots; Vector: lambda ZAPII;
+                     Double stranded cDNAs were synthesized by the method of
+                     Gubler and  Hoffman (1983), using a cDNA synthesis kit
+                     (Amersham Life Science Inc.)  and then ligated to an EcoRI
+                     adaptor (Amersham). cDNA library was  constructed in
+                     lambda ZAPII vector using lambda ZAPII/EcoRI/Gigapack II
+                     cloning kit (Stratagene)"
      rRNA            <1..6
                      /product="18S ribosomal RNA"
      rRNA            229..383
