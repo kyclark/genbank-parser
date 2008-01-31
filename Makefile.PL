@@ -6,6 +6,7 @@ WriteMakefile
           'VERSION_FROM' => 'lib/Bio/GenBankParser.pm',
           'PREREQ_PM' => {
                            'Parse::RecDescent' => '1.94',
+                           'Readonly' => '0',
                            'Test::More' => '0'
                          },
           'INSTALLDIRS' => 'site',
