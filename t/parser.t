@@ -6,7 +6,7 @@ use Data::Dumper;
 use File::Spec::Functions;
 use FindBin qw( $Bin );
 use Readonly;
-use Test::More tests => 14;
+use Test::More tests => 15;
 
 Readonly my $TEST_DATA_DIR => catdir( $Bin, 'data' );
 
@@ -126,6 +126,12 @@ require_ok( 'Bio::GenBankParser' );
         $source->{'feature'}{'note'},
         'Organ: Autoregulated shoots; Vector: lambda ZAPII; Double stranded cDNAs were synthesized by the method of Gubler and  Hoffman (1983), using a cDNA synthesis kit (Amersham Life Science Inc.)  and then ligated to an EcoRI adaptor (Amersham). cDNA library was  constructed in lambda ZAPII vector using lambda ZAPII/EcoRI/Gigapack II cloning kit (Stratagene)',
         'Source/note'
+    );
+
+    is( 
+        $gb->{'BASE_COUNT'}{'a'},
+        163,
+        'Base count'
     );
 
 #    print Dumper($gb), "\n";
