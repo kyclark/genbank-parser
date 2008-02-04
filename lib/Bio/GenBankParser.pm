@@ -260,6 +260,7 @@ section: header
     | organism
     | reference
     | features
+    | base_count
     | origin
     | comment
     | record_delimiter
@@ -328,7 +329,11 @@ keywords: /KEYWORDS/ keyword_value
         $record{'KEYWORDS'} = $item[2];
     }
 
-keyword_value: /([^.]+)[.]?(?=\n)/ { $return = [ split(/,\s*/, $1) ] }
+keyword_value: section_continuing_indented
+    { 
+        ( my $str = $item[1] ) =~ s/\.$//;
+        $return = [ split(/,\s*/, $str ) ];
+    }
     | PERIOD { $return = [] }
 
 source_line: /SOURCE/ source_value 
@@ -452,7 +457,22 @@ features: /FEATURES/ section_continuing_indented
         };
     }
 
-origin: /ORIGIN/ origin_value { $record{'ORIGIN'} = $item[2] }
+base_count: /BASE COUNT/ base_summary(s)
+    {
+        for my $sum ( @{ $item[2] } ) {
+            $record{'BASE_COUNT'}{ $sum->[0] } = $sum->[1];
+        }
+    }
+
+base_summary: /\d+/ /[a-zA-Z]{1}/
+    {
+        $return = [ $item[2], $item[1] ];
+    }
+
+origin: /ORIGIN/ origin_value 
+    { 
+        $record{'ORIGIN'} = $item[2] 
+    }
 
 origin_value: /(.*?)(?=\n\/\/)/xms
     {
