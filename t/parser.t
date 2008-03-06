@@ -6,7 +6,7 @@ use Data::Dumper;
 use File::Spec::Functions;
 use FindBin qw( $Bin );
 use Readonly;
-use Test::More tests => 15;
+use Test::More tests => 17;
 
 Readonly my $TEST_DATA_DIR => catdir( $Bin, 'data' );
 
@@ -132,6 +132,18 @@ require_ok( 'Bio::GenBankParser' );
         $gb->{'BASE_COUNT'}{'a'},
         163,
         'Base count'
+    );
+
+    is( 
+        $gb->{'BASE_COUNT'}{'others'},
+        10,
+        'Base count 2'
+    );
+
+    is( 
+        $gb->{'PROJECT'},
+        'GenomeProject:18357',
+        'Project'
     );
 
 #    print Dumper($gb), "\n";
