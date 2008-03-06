@@ -254,6 +254,7 @@ section: header
     | locus
     | definition
     | accession_line
+    | project_line
     | version_line
     | keywords
     | source_line
@@ -320,6 +321,11 @@ accession_line: /ACCESSION/ genbank_accession(s)
 version_line: /VERSION/ synonym(s)
     {
         push @{ $record{'VERSION'} }, @{ $item[2] };
+    }
+
+project_line: /PROJECT/ section_continuing_indented
+    {
+        $record{'PROJECT'} = $item[2];
     }
 
 synonym: genbank_version | genbank_gi
@@ -464,7 +470,7 @@ base_count: /BASE COUNT/ base_summary(s)
         }
     }
 
-base_summary: /\d+/ /[a-zA-Z]{1}/
+base_summary: /\d+/ /[a-zA-Z]+/
     {
         $return = [ $item[2], $item[1] ];
     }
