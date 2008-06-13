@@ -269,17 +269,19 @@ section: header
 
 header: /.+(?=\nLOCUS)/xms
 
-locus: /LOCUS/xms genbank_accession sequence_length molecule_type 
+locus: /LOCUS/xms locus_name sequence_length molecule_type 
     genbank_division modification_date
     {
         $record{'LOCUS'} = {
-            genbank_accession => $item{'genbank_accession'},
+            locus_name        => $item{'locus_name'},
             sequence_length   => $item{'sequence_length'},
             molecule_type     => $item{'molecule_type'},
             genbank_division  => $item{'genbank_division'},
             modification_date => $item{'modification_date'},
         }
     }
+
+locus_name: /\w+/
 
 space: /\s+/
 
