@@ -150,7 +150,13 @@ Returns the next sequence from the C<file>.
     if ( my $fh = $self->{'fh'} ) {
         local $/ = $GENBANK_RECORD_SEPARATOR; 
 
-        if ( my $rec = <$fh> ) {
+        my $rec;
+        for (;;) {
+            $rec = <$fh>;
+            last if !defined $rec || $rec =~ /\S+/;
+        }
+
+        if ( defined $rec && $rec =~ /\S+/ ) {
             return $self->parse( $rec );
         }
         else {
@@ -250,8 +256,10 @@ startrule: section(s) eofile
     }
     | <error>
 
-section: header
+section: commented_line
+    | header
     | locus
+    | dbsource
     | definition
     | accession_line
     | project_line
@@ -269,14 +277,14 @@ section: header
 
 header: /.+(?=\nLOCUS)/xms
 
-locus: /LOCUS/xms locus_name sequence_length molecule_type 
-    genbank_division modification_date
+locus: /LOCUS/xms locus_name sequence_length molecule_type
+    genbank_division(?) modification_date
     {
         $record{'LOCUS'} = {
             locus_name        => $item{'locus_name'},
             sequence_length   => $item{'sequence_length'},
             molecule_type     => $item{'molecule_type'},
-            genbank_division  => $item{'genbank_division'},
+            genbank_division  => $item{'genbank_division(?)'}[0],
             modification_date => $item{'modification_date'},
         }
     }
@@ -285,16 +293,12 @@ locus_name: /\w+/
 
 space: /\s+/
 
-genbank_accession: /[A-Z]{1}\d{5}/ | /[A-Z]{2}_?\d{6}/ 
+sequence_length: /\d+/ /(aa|bp)/ { $return = "$item[1] $item[2]" }
 
-genbank_version: /[A-Z]{1}\d{5}\.\d+/ | /[A-Z]{2}\d{6}\.\d+/
-
-genbank_gi: /GI:\d+/
-
-sequence_length: /\d+/ 'bp' { $return = "$item[1] $item[2]" }
-
-molecule_type: /\w+/ (/\w+/)(?) 
-    { $return = join(' ', map { $_ || () } $item[1], $item[2][0] ) }
+molecule_type: /\w+/ (/[a-zA-Z]{4,}/)(?)
+    { 
+        $return = join(' ', map { $_ || () } $item[1], $item[2][0] ) 
+    }
 
 genbank_division: 
     /(PRI|ROD|MAM|VRT|INV|PLN|BCT|VRL|PHG|SYN|UNA|EST|PAT|STS|GSS|HTG|HTC|ENV)/
@@ -308,29 +312,22 @@ definition: /DEFINITION/ section_continuing_indented
 
 section_continuing_indented: /.*?(?=\n[A-Z]+\s+)/xms
 
-accession_line: /ACCESSION/ genbank_accession(s)
+accession_line: /ACCESSION/ /(.+)(?=\n)/
     {
-        my @accs = @{ $item[2] };
-
-        if ( scalar @accs <= 1 ) {
-            $record{'ACCESSION'} = shift @accs;
-        }
-        else {
-            push @{ $record{'VERSION'} }, @accs;
-        }
+        my @accs = split /\s+/, $item[2];
+        $record{'ACCESSION'} = shift @accs;
+        push @{ $record{'VERSION'} }, @accs;
     }
 
-version_line: /VERSION/ synonym(s)
+version_line: /VERSION/ /(.+)(?=\n)/
     {
-        push @{ $record{'VERSION'} }, @{ $item[2] };
+        push @{ $record{'VERSION'} }, split /\s+/, $item[2];
     }
 
 project_line: /PROJECT/ section_continuing_indented
     {
         $record{'PROJECT'} = $item[2];
     }
-
-synonym: genbank_version | genbank_gi
 
 keywords: /KEYWORDS/ keyword_value
     { 
@@ -344,9 +341,18 @@ keyword_value: section_continuing_indented
     }
     | PERIOD { $return = [] }
 
+dbsource: /DBSOURCE/ /\w+/ /[^\n]+/xms
+    {
+        push @{ $record{'DBSOURCE'} }, {
+            $item[2], $item[3]
+        };
+    }
+
 source_line: /SOURCE/ source_value 
     { 
-        $record{'SOURCE'} = $item[2];
+        ( my $src = $item[2] ) =~ s/\.$//;
+        $src =~ s/\bsp$/sp./;
+        $record{'SOURCE'} = $src;
     }
 
 source_value: /(.+?)(?=\n\s{0,2}[A-Z]+)/xms { $return = $1 }
@@ -365,18 +371,22 @@ classification_line: /([^.]+)[.]/xms { $return = [ split(/;\s*/, $1) ] }
 
 word: /\w+/
 
-reference: /REFERENCE/ NUMBER(?) parenthetical_phrase(?) authors title journal pubmed(?)
+reference: /REFERENCE/ NUMBER(?) parenthetical_phrase(?) authors(?) consrtm(?) title journal remark(?) pubmed(?) remark(?)
     {
-        my $num = $item[2][0] || $ref_num++;
+        my $num    = $item[2][0] || $ref_num++;
+        my $remark = join(' ', map { $_ || () } $item[8][0], $item[10][0]);
 
         push @{ $record{'REFERENCES'} }, {
             number  => $num,
-            authors => $item{'authors'},
+            authors => $item{'authors(?)'}[0],
             title   => $item{'title'},
             journal => $item{'journal'},
-            pubmed  => $item[7][0],
+            pubmed  => $item[9][0],
             note    => $item[3][0],
+            remark  => $remark,
+            consrtm => $item[5][0],
         };
+
     }
 
 parenthetical_phrase: /\( ([^)]+) \)/xms
@@ -398,21 +408,33 @@ author_value: /(.+?)(?=\n\s{0,2}[A-Z]+)/xms
 title: /TITLE/ /.*?(?=\n\s{0,2}[A-Z]+)/xms
     { ( $return = $item[2] ) =~ s/\n\s+/ /; }
 
-journal: /JOURNAL/ /.*?(?=\n\s+PUBMED)/xms 
+journal: /JOURNAL/ journal_value 
     { 
-        ( $return = $item[2] ) =~ s/\n\s+/ /g;
+        $return = $item[2] 
     }
-    | /JOURNAL/ journal_value { $return = $item[2] }
 
-journal_value: /(.+?)(?=\n[A-Z]+)/xms { $return = $1; $return =~ s/\n\s+/ /g; }
+journal_value: /(.+)(?=\n\s{3}PUBMED)/xms 
+    { 
+        $return = $1; 
+        $return =~ s/\n\s+/ /g; 
+    }
+    | /(.+?)(?=\n\s{0,2}[A-Z]+)/xms 
+    { 
+        $return = $1; 
+        $return =~ s/\n\s+/ /g; 
+    }
 
 pubmed: /PUBMED/ NUMBER
     { $return = $item[2] }
 
+remark: /REMARK/ section_continuing_indented
+    { $return = $item[2] }
+
+consrtm: /CONSRTM/ /[^\n]+/xms { $return = $item[2] }
+
 features: /FEATURES/ section_continuing_indented
     { 
         my ( $location, $cur_feature_name, %cur_features, $cur_key );
-#        for my $fline ( map { s/^\s+|\s+$//g; $_ } split(/\n/, $item[2]) ) {
         for my $fline ( split(/\n/, $item[2]) ) {
             next if $fline =~ m{^\s*Location/Qualifiers};
             next if $fline !~ /\S+/;
@@ -499,6 +521,8 @@ comment_value: /(.+?)(?=\n[A-Z]+)/xms
     { 
         $record{'COMMENT'} = $1;
     }
+
+commented_line: /#[^\n]+/
 
 NUMBER: /\d+/
 
