@@ -54,7 +54,7 @@ require_ok( 'Bio::GenBankParser' );
             'molecule_type'     => 'DNA linear',
             'sequence_length'   => '660 bp',
             'genbank_division'  => 'PLN',
-            'genbank_accession' => 'AB000001'
+            'locus_name'        => 'AB000001'
         },
         'Locus'
     );
@@ -73,7 +73,9 @@ require_ok( 'Bio::GenBankParser' );
                 'title'  => 'Sequence variation of the rDNA ITS regions within and between anastomosis groups in Rhizoctonia solani',
                 'note'    => undef,
                 'pubmed'  => '9339350',
-                'journal' => 'Curr. Genet. 32 (3), 237-243 (1997)'
+                'journal' => 'Curr. Genet. 32 (3), 237-243 (1997)',
+                'remark'  => undef,
+                'consrtm' => undef
             },
             {
                 'authors' => [ 'Kuninaga,S.' ],
@@ -82,7 +84,9 @@ require_ok( 'Bio::GenBankParser' );
                 'note'    => 'bases 1 to 660',
                 'pubmed'  => undef,
                 'journal' =>
-                    'Submitted (19-DEC-1996) Shiro Kuninaga, Health Sciences University of Hokkaido, General Education; 1757 Kanazawa, Tohbetsu, Hokkaido 061-02, Japan (E-mail:kuninaga@hoku-iryo-u.ac.jp, Tel:81-1332-3-1211, Fax:81-1332-3-1276)'
+                    'Submitted (19-DEC-1996) Shiro Kuninaga, Health Sciences University of Hokkaido, General Education; 1757 Kanazawa, Tohbetsu, Hokkaido 061-02, Japan (E-mail:kuninaga@hoku-iryo-u.ac.jp, Tel:81-1332-3-1211, Fax:81-1332-3-1276)',
+                'remark'  => undef,
+                'consrtm' => undef
             }
         ],
         'References'
