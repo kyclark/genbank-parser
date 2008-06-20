@@ -375,6 +375,7 @@ reference: /REFERENCE/ NUMBER(?) parenthetical_phrase(?) authors(?) consrtm(?) t
     {
         my $num    = $item[2][0] || $ref_num++;
         my $remark = join(' ', map { $_ || () } $item[8][0], $item[10][0]);
+        $remark    = undef if $remark !~ /\S+/;
 
         push @{ $record{'REFERENCES'} }, {
             number  => $num,
