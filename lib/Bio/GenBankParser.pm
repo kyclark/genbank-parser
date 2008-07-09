@@ -270,6 +270,7 @@ section: commented_line
     | reference
     | features
     | base_count
+    | contig
     | origin
     | comment
     | record_delimiter
@@ -301,7 +302,7 @@ molecule_type: /\w+/ (/[a-zA-Z]{4,}/)(?)
     }
 
 genbank_division: 
-    /(PRI|ROD|MAM|VRT|INV|PLN|BCT|VRL|PHG|SYN|UNA|EST|PAT|STS|GSS|HTG|HTC|ENV)/
+    /(PRI|CON|ROD|MAM|VRT|INV|PLN|BCT|VRL|PHG|SYN|UNA|EST|PAT|STS|GSS|HTG|HTC|ENV)/
 
 modification_date: /\d+-[A-Z]{3}-\d{4}/
 
@@ -311,6 +312,8 @@ definition: /DEFINITION/ section_continuing_indented
     }
 
 section_continuing_indented: /.*?(?=\n[A-Z]+\s+)/xms
+
+section_continuing_indented: /.*?(?=\n\/\/)/xms
 
 accession_line: /ACCESSION/ /(.+)(?=\n)/
     {
@@ -521,6 +524,11 @@ comment: /COMMENT/ comment_value
 comment_value: /(.+?)(?=\n[A-Z]+)/xms
     { 
         $record{'COMMENT'} = $1;
+    }
+
+contig: /CONTIG/ section_continuing_indented 
+    {
+        $record{'CONTIG'} = $item[2];
     }
 
 commented_line: /#[^\n]+/
