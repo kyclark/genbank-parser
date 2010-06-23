@@ -6,7 +6,7 @@ use Data::Dumper;
 use File::Spec::Functions;
 use FindBin qw( $Bin );
 use Readonly;
-use Test::More tests => 17;
+use Test::More tests => 19;
 
 Readonly my $TEST_DATA_DIR => catdir( $Bin, 'data' );
 
@@ -150,5 +150,20 @@ require_ok( 'Bio::GenBankParser' );
         'Project'
     );
 
-#    print Dumper($gb), "\n";
+    my $rec2 = <$fh>;
+    my $gb2  = $p->parse( $rec2 );
+
+    is( $gb2->{'LOCUS'}{'locus_name'}, 'YSCPLASM', "Locus is 'YSCPLASM'" );
+
+    my $acc2 = join(' ', qw[
+        J01347 L00321 L00322 L00323 L00324 M10185 M11111 M11593
+        M14239-M14245 M14253-M14259 M14591-M14598 V01323
+        J01347.1 GI:172190
+    ]);
+
+    is( 
+        join(' ', $gb2->{'ACCESSION'}, @{ $gb2->{'VERSION'} } ), 
+        $acc2, 
+        "Accession is '$acc2'" 
+    );
 }
