@@ -19,11 +19,11 @@ Bio::GenBankParser - Parse::RecDescent parser for a GenBank record
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 SYNOPSIS
 
@@ -315,7 +315,7 @@ section_continuing_indented: /.*?(?=\n[A-Z]+\s+)/xms
 
 section_continuing_indented: /.*?(?=\n\/\/)/xms
 
-accession_line: /ACCESSION/ /(.+)(?=\n)/
+accession_line: /ACCESSION/ section_continuing_indented
     {
         my @accs = split /\s+/, $item[2];
         $record{'ACCESSION'} = shift @accs;
