@@ -13,7 +13,7 @@ my $builder = Module::Build->new(
     add_to_cleanup      => [ 'Bio-GenBankParser-*' ],
     create_makefile_pl  => 'traditional',
     requires            => {
-        'Parse::RecDescent' => 1.94,
+        'Parse::RecDescent' => 1.965001,
         'Readonly'          => 0,
     },
     recommends          => {
